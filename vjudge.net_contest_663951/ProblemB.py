@@ -1,20 +1,42 @@
-import math
+def format_input():
+	t, = list(map(int, input().split()))
+	n, a, = [0] * t, [None] * t
+	for i in range(t):
+		n[i], = list(map(int, input().split()))
+		a[i] = list(map(int, input().split()))
 
-def line(a,b,c,d): return math.sqrt((a-c)**2+(b-d)**2)
-    
+	return t, n, a,
 
-def line_pos(a,b,c,d,e,f):
-    A = d-b
-    B = a-c
-    C = 0 - b * B - A * a
-    dist = (A*e + B*f + C)/math.sqrt(A*A+B*B)
-    if dist==0.0: return "TOUCH"
-    elif dist<0: return "LEFT"
-    else: return "RIGHT"
-    return dist
+def get_answer(t, n, a):
 
-for _ in range(int(input())):
-    a,b,c,d,e,f = input().split()
-    y = line_pos(int(a),int(b),int(c),int(d),int(e),int(f))
-    print(y)
-    
+	possibilities = []
+	for i in range(t):
+		target = sum(a[i]) // n[i]
+		res = sum(a[i]) % n[i]
+		buffer = 0
+		for j in range(n[i]):
+			if j == n[i] - res:
+				target += 1
+			buffer += target - a[i][j]
+			if buffer < 0:
+				possible = False
+				break
+		else:
+			possible = True
+
+		possibilities.append(possible)
+
+	return possibilities,
+
+def print_answer(possibilities):
+	for possible in possibilities:
+		if possible:
+			print("Yes")
+		else:
+			print("No")
+
+if __name__ == '__main__':
+	vals = format_input()
+
+	ans = get_answer(*vals)
+	print_answer(*ans)
