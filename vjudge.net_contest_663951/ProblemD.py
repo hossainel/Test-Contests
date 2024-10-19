@@ -13,8 +13,5 @@ def line_pos(a,b,c,d,e,f):
     else: return "RIGHT"
     return dist
 
-for _ in range(int(input())):
-    a,b,c,d,e,f = map(int, input().split())
-    y = line_pos(a,b,c,d,e,f)
-    print(y)
+for _ in range(int(input())): print(line_pos(map(int, input().split())))
     
