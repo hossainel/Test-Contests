@@ -1,3 +1,4 @@
+# author @hossainel
 import math
 
 def line(a,b,c,d): return math.sqrt((a-c)**2+(b-d)**2)
