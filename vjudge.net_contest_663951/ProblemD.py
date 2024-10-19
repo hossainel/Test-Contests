@@ -11,7 +11,6 @@ def line_pos(a,b,c,d,e,f):
     if dist==0.0: return "TOUCH"
     elif dist<0: return "LEFT"
     else: return "RIGHT"
-    return dist
 
 for _ in range(int(input())): print(line_pos(map(int, input().split())))
     
