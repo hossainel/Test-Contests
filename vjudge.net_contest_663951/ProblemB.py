@@ -1,4 +1,4 @@
-@author @LikeaRooster 
+# author @LikeaRooster 
 def format_input():
 	t, = list(map(int, input().split()))
 	n, a, = [0] * t, [None] * t
